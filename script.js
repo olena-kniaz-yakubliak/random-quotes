@@ -5,10 +5,14 @@ import quotes from "./quotes.js";
 const quoteElement = document.getElementById("quote");
 const authorElement = document.getElementById("author");
 const generateButton = document.getElementById("generate-btn");
+const favoriteToggleButton = document.getElementById("favorite-btn");
+
+let currentQuoteIndex;
 
 function generateRandomQuote() {
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  const randomQuote = quotes[randomIndex];
+  currentQuoteIndex = Math.floor(Math.random() * quotes.length);
+  const randomQuote = quotes[currentQuoteIndex];
+
   // const quote = randomQuote.quote;
   // const author = randomQuote.author;
   //const { quote, author } = randomQuote;
@@ -17,7 +21,11 @@ function generateRandomQuote() {
   authorElement.textContent = randomQuote.author;
 }
 
-generateButton.addEventListener("click", generateRandomQuote);
+function toggleFavorites() {
+  quotes[currentQuoteIndex].isFavorite = !quotes[currentQuoteIndex].isFavorite;
+  console.log(quotes[currentQuoteIndex].isFavorite);
+  if(!)
+}
 
-//Generate a random quote when the page loads
-//generateRandomQuote();
+generateButton.addEventListener("click", generateRandomQuote);
+favoriteToggleButton.addEventListener("click", toggleFavorites);
