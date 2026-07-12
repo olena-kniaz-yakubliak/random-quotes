@@ -30,3 +30,22 @@ body {
 .quote::after {
   content: '"';
 }
+
+.favorites-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.favorite-card {
+  background-color: #f9f9f9;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 25%;
+}
+
+.author {
+  font-style: italic;
+}
