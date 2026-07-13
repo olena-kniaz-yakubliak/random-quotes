@@ -20,17 +20,26 @@ function generateRandomQuote() {
 
   quoteElement.textContent = randomQuote.quote;
   authorElement.textContent = randomQuote.author;
-  favoriteToggleButton.textContent = randomQuote.isFavorite
-    ? "Remove from favorites"
-    : "Add to Favorites";
+  if (randomQuote.isFavorite) {
+    favoriteToggleButton.classList.add("fa");
+    favoriteToggleButton.classList.remove("far");
+  } else {
+    favoriteToggleButton.classList.remove("fa");
+    favoriteToggleButton.classList.add("far");
+  }
+  favoriteToggleButton.style.display = "inline-block";
 }
 
 function toggleFavorites() {
   const currentQuote = quotes[currentQuoteIndex];
   currentQuote.isFavorite = !currentQuote.isFavorite;
-  favoriteToggleButton.textContent = currentQuote.isFavorite
-    ? "Remove from favorites"
-    : "Add to Favorites";
+  if (currentQuote.isFavorite) {
+    favoriteToggleButton.classList.add("fa");
+    favoriteToggleButton.classList.remove("far");
+  } else {
+    favoriteToggleButton.classList.remove("fa");
+    favoriteToggleButton.classList.add("far");
+  }
 
   if (currentQuote.isFavorite) {
     const favoriteCard = document.createElement("div");
@@ -54,4 +63,4 @@ function toggleFavorites() {
 generateButton.addEventListener("click", generateRandomQuote);
 favoriteToggleButton.addEventListener("click", toggleFavorites);
 
-generateRandomQuote();
+//generateRandomQuote();

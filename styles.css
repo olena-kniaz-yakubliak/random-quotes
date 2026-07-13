@@ -8,6 +8,9 @@ body {
   margin: 50px auto;
   text-align: center;
 }
+.hidden {
+  display: none;
+}
 
 .btn {
   padding: 10px 20px;
@@ -48,4 +51,10 @@ body {
 
 .author {
   font-style: italic;
+}
+
+.star-icon {
+  font-size: 30px;
+  color: #e9e90a;
+  cursor: pointer;
 }
