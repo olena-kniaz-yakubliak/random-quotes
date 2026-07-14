@@ -56,5 +56,6 @@ body {
 .star-icon {
   font-size: 30px;
   color: #e9e90a;
+  vertical-align: middle;
   cursor: pointer;
 }
