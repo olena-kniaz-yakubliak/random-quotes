@@ -40,6 +40,10 @@ body {
   justify-content: center;
 }
 
+#favorite-btn {
+  display: none;
+}
+
 .favorite-card {
   background-color: #f9f9f9;
   padding: 10px 20px;
