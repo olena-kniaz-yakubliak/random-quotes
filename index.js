@@ -2,49 +2,35 @@
 
 import quotes from "./src/quotes.js";
 import { generateRandomInt } from "./src/utils.js";
-import {
-  hideFavoriteCard,
-  showFavoriteCard,
-  toggleFavoritesIcon,
-} from "./src/favoritesHandler.js";
+import { handleFavorite } from "./src/favoritesHandler.js";
 
-const quoteElement = document.getElementById("quote");
-const authorElement = document.getElementById("author");
 const generateButton = document.getElementById("generate-btn");
-const favoriteToggleButton = document.getElementById("favorite-btn");
-const favoritesContainer = document.getElementById("favorites-container");
 
 let currentQuoteIndex;
+let currentQuote = null;
 
-function generateRandomQuote() {
-  const randomIndex = generateRandomInt(quotes.length);
-  const { quote, author, isFavorite } = quotes[randomIndex];
-  currentQuoteIndex = randomIndex;
+function displayQuote(quote) {
+  const { text, author, isFavorite } = quote;
+  const quoteElement = document.getElementById("quote");
+  const authorElement = document.getElementById("author");
 
-  quoteElement.textContent = quote;
+  quoteElement.textContent = text;
   authorElement.textContent = author;
-  toggleFavoritesIcon(isFavorite, favoriteToggleButton);
-  favoriteToggleButton.style.display = "inline-block";
+  handleFavorite(isFavorite);
 }
 
-function toggleFavorites() {
-  const currentQuote = quotes[currentQuoteIndex];
-  currentQuote.isFavorite = !currentQuote.isFavorite;
-  toggleFavoritesIcon(currentQuote.isFavorite, favoriteToggleButton);
-  favoriteToggleButton.style.display = "inline-block";
-
-  if (currentQuote.isFavorite) {
-    showFavoriteCard(
-      currentQuote.quote,
-      currentQuote.author,
-      favoritesContainer,
-    );
-  } else {
-    hideFavoriteCard(currentQuote.quote);
-  }
+function choseRandomQuote(quotes) {
+  const randomIndex = generateRandomInt(quotes.length);
+  currentQuoteIndex = randomIndex;
+  return quotes[randomIndex];
 }
 
-generateButton.addEventListener("click", generateRandomQuote);
-favoriteToggleButton.addEventListener("click", toggleFavorites);
+function generateAndDisplayRandomQuote() {
+  const randomQuote = choseRandomQuote(quotes);
+  currentQuote = randomQuote;
+  displayQuote(randomQuote);
+}
 
-generateRandomQuote();
+generateButton.addEventListener("click", generateAndDisplayRandomQuote);
+
+export { currentQuote };
