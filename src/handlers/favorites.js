@@ -1,6 +1,6 @@
 "use strict";
 
-import { currentQuote } from "../index.js";
+import { currentQuote } from "./quote.js";
 
 const favoritesContainer = document.getElementById("favorites-container");
 
@@ -61,10 +61,4 @@ function hideFavoriteCard(text) {
   });
 }
 
-export {
-  handleFavorite,
-  toggleFavoritesIcon,
-  showFavoriteCard,
-  hideFavoriteCard,
-  showBtn,
-};
+export { handleFavorite };
